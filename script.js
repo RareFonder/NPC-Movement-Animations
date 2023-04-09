@@ -43,5 +43,5 @@ const animate = () => {
   });
   gameFrame++;
   requestAnimationFrame(animate);
-}
+};
 animate();
