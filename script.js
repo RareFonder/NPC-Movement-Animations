@@ -6,22 +6,27 @@ const numberOfEnemies = 100;
 const enemiesArray = [];
 
 const enemyImage = new Image();
-enemyImage.src = ''
+enemyImage.src = 'https://stackblitz.com/files/web-platform-7t79sh/github/RareFonder/NPC-Movement-Animations/main/enemy1.png';
 
 class Enemy {
   constructor() {
     this.x = Math.random() * canvas.width;
     this.y = Math.random() * canvas.height;
-    this.width = 100;
-    this.height = 100;
     this.speed = Math.random() * 4 - 2;
+    this.spriteWidth = 293;
+    this.spriteHeight = 155;
+    this.width = this.spriteWidth / 2.5;
+    this.height = this.spriteHeight / 2.5;
+    this.frame = 0;
   }
   update() {
     this.x += this.speed;
     this.y += this.speed;
+    this.frame > 4 ? this.frame = 0 : this.frame++
   }
   draw() {
     ctx.strokeRect(this.x, this.y, this.width, this.height);
+    ctx.drawImage(enemyImage, this.frame * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height);
   }
 };
 
